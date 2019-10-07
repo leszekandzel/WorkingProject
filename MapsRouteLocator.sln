@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapsRouteLocator.Client", "MapsRouteLocator\MapsRouteLocator.Client.csproj", "{3A1F24C2-999B-4519-91CE-9F4ECA191A25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop Client", "Desktop Client", "{470B3A50-1F38-46D6-AA73-26459312FADB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EE28C3D3-C839-4382-AD35-33934D80F32F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapsRouteLocator.Data", "MapsRouteLocator.Data\MapsRouteLocator.Data.csproj", "{9D2F5F21-458F-46ED-BC0B-415F73A747D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapsRouteLocator.Business", "MapsRouteLocator.Business\MapsRouteLocator.Business.csproj", "{2025182A-4E9F-4D0F-9158-2F238906FD94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapsRouteLocator.Client.Tests", "MapsRouteLocator.Client.Tests\MapsRouteLocator.Client.Tests.csproj", "{6644B9BF-74C4-4F00-9DE1-C7F200B3D8B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A1F24C2-999B-4519-91CE-9F4ECA191A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A1F24C2-999B-4519-91CE-9F4ECA191A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A1F24C2-999B-4519-91CE-9F4ECA191A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A1F24C2-999B-4519-91CE-9F4ECA191A25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D2F5F21-458F-46ED-BC0B-415F73A747D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D2F5F21-458F-46ED-BC0B-415F73A747D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D2F5F21-458F-46ED-BC0B-415F73A747D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D2F5F21-458F-46ED-BC0B-415F73A747D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2025182A-4E9F-4D0F-9158-2F238906FD94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2025182A-4E9F-4D0F-9158-2F238906FD94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2025182A-4E9F-4D0F-9158-2F238906FD94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2025182A-4E9F-4D0F-9158-2F238906FD94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6644B9BF-74C4-4F00-9DE1-C7F200B3D8B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6644B9BF-74C4-4F00-9DE1-C7F200B3D8B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6644B9BF-74C4-4F00-9DE1-C7F200B3D8B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6644B9BF-74C4-4F00-9DE1-C7F200B3D8B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3A1F24C2-999B-4519-91CE-9F4ECA191A25} = {470B3A50-1F38-46D6-AA73-26459312FADB}
+		{9D2F5F21-458F-46ED-BC0B-415F73A747D5} = {470B3A50-1F38-46D6-AA73-26459312FADB}
+		{2025182A-4E9F-4D0F-9158-2F238906FD94} = {470B3A50-1F38-46D6-AA73-26459312FADB}
+		{6644B9BF-74C4-4F00-9DE1-C7F200B3D8B0} = {EE28C3D3-C839-4382-AD35-33934D80F32F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3397E0FE-DB34-45C5-ADBC-C43A79C096E1}
+	EndGlobalSection
+EndGlobal
