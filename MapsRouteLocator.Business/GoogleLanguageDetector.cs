@@ -12,19 +12,23 @@ namespace MapsRouteLocator.Business
 {
     public class GoogleLanguageDetector : IGoogleLanguageDetector   
     {
-        private CultureInfo ci;
+        private ICultureInfoProvider cultureInfoProvider;
 
-        public GoogleLanguageDetector(CultureInfo ci)
+        public GoogleLanguageDetector(ICultureInfoProvider cultureInfoProvider)
         {
-            this.ci = ci;
+            this.cultureInfoProvider = cultureInfoProvider;
         }
 
         public GoogleLanguage GetGoogleLanguage()
         {
-            switch (this.ci.ThreeLetterISOLanguageName) 
+            var cultureInfo = this.cultureInfoProvider.GetCultureInfo();
+            switch (cultureInfo.TwoLetterISOLanguageName) 
             {
                 case "de":
                     return new GoogleLanguage("de", "German");
+
+                case "fr":
+                    return new GoogleLanguage("fr", "French");
 
                 case "pl":
                     return new GoogleLanguage("pl", "Polish");

@@ -11,23 +11,20 @@ namespace MapsRouteLocator.Data
     /// </summary>
     public class GoogleLanguage
     {
-        private string code;
-        private string name;
-
         public GoogleLanguage(string code, string name)
         {
-            this.code = code;
-            this.name = name;
+            this.Code = code;
+            this.Name = name;
         }
 
         /// <summary>
         /// Code to pass to Google service in order to receive data in selected language.
         /// </summary>
-        public string  Code { get;  }
+        public string  Code { get; private set; }
 
         /// <summary>
         /// Name just for better way do understand which language it is.
         /// </summary>
-        public string Name { get;  }
+        public string Name { get; private set; }
     }
 }

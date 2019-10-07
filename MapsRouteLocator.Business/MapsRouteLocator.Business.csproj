@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CultureInfoProvider.cs" />
     <Compile Include="GoogleLanguageDetector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

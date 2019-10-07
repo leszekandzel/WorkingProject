@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapsRouteLocator.Client.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapsRouteLocator.Interfaces", "MapsRouteLocator.Interfaces\MapsRouteLocator.Interfaces.csproj", "{070B2499-1A7E-4DA3-9718-3D8574DDB1DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapsRouteLocator.Business.Tests", "MapsRouteLocator.Business.Tests\MapsRouteLocator.Business.Tests.csproj", "{3FAD22E5-BAD9-4E28-82D8-B00899DAFCD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{070B2499-1A7E-4DA3-9718-3D8574DDB1DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{070B2499-1A7E-4DA3-9718-3D8574DDB1DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{070B2499-1A7E-4DA3-9718-3D8574DDB1DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FAD22E5-BAD9-4E28-82D8-B00899DAFCD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FAD22E5-BAD9-4E28-82D8-B00899DAFCD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FAD22E5-BAD9-4E28-82D8-B00899DAFCD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FAD22E5-BAD9-4E28-82D8-B00899DAFCD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{2025182A-4E9F-4D0F-9158-2F238906FD94} = {470B3A50-1F38-46D6-AA73-26459312FADB}
 		{6644B9BF-74C4-4F00-9DE1-C7F200B3D8B0} = {EE28C3D3-C839-4382-AD35-33934D80F32F}
 		{070B2499-1A7E-4DA3-9718-3D8574DDB1DF} = {470B3A50-1F38-46D6-AA73-26459312FADB}
+		{3FAD22E5-BAD9-4E28-82D8-B00899DAFCD1} = {EE28C3D3-C839-4382-AD35-33934D80F32F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3397E0FE-DB34-45C5-ADBC-C43A79C096E1}
