@@ -10,7 +10,7 @@
              d:DesignHeight="450" d:DesignWidth="800" Height="200">
     <ScrollViewer>
         <StackPanel>
-            <local:LocationInput Grid.Row="0" Margin="0,5,0,5"></local:LocationInput>
+            <local:LocationInput Grid.Row="0" Margin="0,5,0,5" Title="Von" RemoveButtonVisible="False" ></local:LocationInput>
             <Button Margin="0,5,0,0" Width="40" HorizontalAlignment="Left" Command="{Binding AddNewRouteCommand}">+</Button>
             <ItemsControl ItemsSource="{Binding Path=ViaRoutes}">
                 <ItemsControl.ItemTemplate>
@@ -19,7 +19,7 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <local:LocationInput Grid.Row="1" Margin="0,5,0,5"></local:LocationInput>
+            <local:LocationInput Grid.Row="1" Margin="0,5,0,5" Title="Bis" RemoveButtonVisible="False" ></local:LocationInput>
         </StackPanel>
     </ScrollViewer>
 </UserControl>
