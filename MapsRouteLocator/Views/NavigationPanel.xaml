@@ -8,14 +8,18 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Height="200">
-    <Grid>
-        <Grid HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
+    <ScrollViewer>
+        <StackPanel>
             <local:LocationInput Grid.Row="0" Margin="0,5,0,5"></local:LocationInput>
+            <Button Margin="0,5,0,0" Width="40" HorizontalAlignment="Left" Command="{Binding AddNewRouteCommand}">+</Button>
+            <ItemsControl ItemsSource="{Binding Path=ViaRoutes}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:LocationInput Grid.Row="1" Margin="0,5,0,5"></local:LocationInput>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
             <local:LocationInput Grid.Row="1" Margin="0,5,0,5"></local:LocationInput>
-        </Grid>
-    </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
