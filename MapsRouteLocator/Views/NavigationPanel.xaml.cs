@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace MapsRouteLocator.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NavigationPanel.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NavigationPanel : UserControl
     {
-        public MainWindow()
+        public NavigationPanel()
         {
             InitializeComponent();
-
-            //this.MapBrowser.Navigate("https://www.google.com/maps/@?api=1&map_action=map&key=AIzaSyDp4756MODkmIKp0R4AqIYADNWKv-qbYNE");
         }
     }
 }

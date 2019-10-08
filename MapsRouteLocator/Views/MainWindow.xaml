@@ -6,9 +6,17 @@
         xmlns:local="clr-namespace:MapsRouteLocator"
         mc:Ignorable="d"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:views="clr-namespace:MapsRouteLocator.Views"
+        xmlns:utils="clr-namespace:MapsRouteLocator.Utils"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="595.946" Width="1693.919">
     <Grid>
-        <TextBlock Text="{Binding Title, FallbackValue='BindingGroup not found'}" FontSize="48" HorizontalAlignment="Center"></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <views:NavigationPanel Grid.Row="0"></views:NavigationPanel>
+        <WebBrowser Grid.Row="1" Name="MapBrowser" Margin ="10,10,10,10" utils:WebBrowserUtility.BindableSource="{Binding MapUrl, Mode=OneWay}" />
     </Grid>
 </Window>
