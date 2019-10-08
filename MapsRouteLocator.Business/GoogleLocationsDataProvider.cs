@@ -21,17 +21,20 @@ namespace MapsRouteLocator.Business
             this.googleLocationsQueryProvider = googleLocationsQueryProvider;
         }
 
-        public IEnumerable<LocationData> GetLocationsList(string prefix)
+        public async Task<IEnumerable<LocationData>> GetLocationsListAsync(string prefix)
         {
             var queryString = this.googleLocationsQueryProvider.GetLocationsQuery(prefix);
 
             DataSet ds = new DataSet();
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(queryString);
-            WebResponse response = request.GetResponse();
+           // WebResponse response = request.GetResponse();
+            WebResponse response =
+                await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, request);
             try
             {
                 Stream dataStream = response.GetResponseStream();
+                
                 StreamReader sreader = new StreamReader(dataStream);
                 string responsereader = sreader.ReadToEnd();
                 ds.ReadXml(new XmlTextReader(new StringReader(responsereader)));

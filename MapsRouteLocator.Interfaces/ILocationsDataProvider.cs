@@ -9,6 +9,6 @@ namespace MapsRouteLocator.Interfaces
 {
     public interface ILocationsDataProvider
     {
-        IEnumerable<LocationData> GetLocationsList(string prefix);
+         Task<IEnumerable<LocationData>> GetLocationsListAsync(string prefix);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -18,28 +19,40 @@ namespace MapsRouteLocator.ViewModels
     {
         private readonly ILocationsDataProvider locationsDataProvider;
         private readonly ISettingsProvider settingsProvider;
+        public ObservableCollection<string> ComboItems { get; set; }
+
         public LocationInputViewModel(ILocationsDataProvider locationsDataProvider, ISettingsProvider settingsProvider)
         {
+            this.ComboItems = new ObservableCollection<string>();
             this.locationsDataProvider = locationsDataProvider;
             this.settingsProvider = settingsProvider;
-            var myItems = new[] { "Apple", "Orange", "Cherry", "Banana" };
-            ComboItems = CollectionViewSource.GetDefaultView(myItems);
         }
 
-        public ICollectionView ComboItems { get; set; }
-
+        private string comboBoxText;
         public string ComboText
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return this.comboBoxText; }
             set
             {
-                if (value.Length > this.settingsProvider.Settings.MinimumSearchStringLength)
+                this.comboBoxText = value;
+                this.FetchLocations(value);
+            }
+        }
+
+        private async Task FetchLocations(string prefix)
+        {
+            if (prefix.Length > this.settingsProvider.Settings.MinimumSearchStringLength)
+            {
+                if (ComboItems.Any(x => x == prefix))
                 {
-                    var result = locationsDataProvider.GetLocationsList(value.ToLower());
-                    ComboItems.Filter = item => item.ToString().ToLower().Contains(value.ToLower());
+                    return;
+                }
+
+                var result = await locationsDataProvider.GetLocationsListAsync(prefix.ToLower());
+                ComboItems.Clear();
+                foreach (var location in result)
+                {
+                    ComboItems.Add(location.Name);
                 }
             }
         }
