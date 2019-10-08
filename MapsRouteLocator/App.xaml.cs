@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Device.Location;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,11 +16,12 @@ namespace MapsRouteLocator
     /// </summary>
     public partial class App : Application
     {
+        private UnityContainer unityContainer;
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
-            var container = new UnityContainer();
+            this.unityContainer = new UnityContainer();
 
             var window = new MainWindow();
             window.ShowDialog();

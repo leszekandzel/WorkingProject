@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ICultureInfoProvider.cs" />
     <Compile Include="IGoogleLanguageDetector.cs" />
+    <Compile Include="ISettingsProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
