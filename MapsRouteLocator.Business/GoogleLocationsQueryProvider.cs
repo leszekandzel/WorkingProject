@@ -9,7 +9,7 @@ namespace MapsRouteLocator.Business
 {
     public class GoogleLocationsQueryProvider : ILocationsQueryProvider
     {
-        private ISettingsProvider settingsProvider;
+        private readonly ISettingsProvider settingsProvider;
 
         public GoogleLocationsQueryProvider(ISettingsProvider settingsProvider)
         {

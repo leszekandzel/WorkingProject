@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapsRouteLocator.Client.Tests
+namespace MapsRouteLocator.Data
 {
-    public class Class1
-    {
-    }
+   public class Consts
+   {
+       public const int MinimumSearchStringLength = 4;
+   }
 }

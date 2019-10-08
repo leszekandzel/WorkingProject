@@ -12,7 +12,8 @@ namespace MapsRouteLocator.Business
 {
     public class GoogleLanguageDetector : IGoogleLanguageDetector   
     {
-        private ICultureInfoProvider cultureInfoProvider;
+        private readonly ICultureInfoProvider cultureInfoProvider;
+        private static GoogleLanguage googleLanguage;
 
         public GoogleLanguageDetector(ICultureInfoProvider cultureInfoProvider)
         {
@@ -21,21 +22,33 @@ namespace MapsRouteLocator.Business
 
         public GoogleLanguage GetGoogleLanguage()
         {
+            if (googleLanguage != null)
+            {
+                return googleLanguage;
+            }
+
             var cultureInfo = this.cultureInfoProvider.GetCultureInfo();
             switch (cultureInfo.TwoLetterISOLanguageName) 
             {
                 case "de":
-                    return new GoogleLanguage("de", "German");
+                    googleLanguage = new GoogleLanguage("de", "German");
+                    break;
 
                 case "fr":
-                    return new GoogleLanguage("fr", "French");
+                    googleLanguage = new GoogleLanguage("fr", "French");
+                    break;
 
                 case "pl":
-                    return new GoogleLanguage("pl", "Polish");
+                    googleLanguage = new GoogleLanguage("pl", "Polish");
+                    break;
+
 
                 default:
-                return new GoogleLanguage("en", "English");
+                    googleLanguage = new GoogleLanguage("en", "English");
+                    break;
             }
+
+            return googleLanguage;
         }
 
         // possible options are:

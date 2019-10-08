@@ -13,24 +13,31 @@ namespace MapsRouteLocator.Business
             this.googleLanguageDetector = googleLanguageDetector;
         }
 
-        private  Settings settings;
+        private static Settings settings;
 
         public  Settings Settings
         {
             get
             {
-                if (this.settings == null)
+                if (settings == null)
                 {
-                    this.settings = new Settings();
-                    this.settings.GoogleKey = System.Configuration.ConfigurationManager.AppSettings["GoogleKey"];
-                    this.settings.LanguageCode = googleLanguageDetector.GetGoogleLanguage().Code;
-                    this.settings.Latitude = System.Configuration.ConfigurationManager.AppSettings["Latitude"];
-                    this.settings.Longitude = System.Configuration.ConfigurationManager.AppSettings["Longitude"];
-                    this.settings.LocationsQueryString = System.Configuration.ConfigurationManager.AppSettings["LocationsQueryString"];
-                    
+                    settings = new Settings();
+
+                    settings.GoogleKey = System.Configuration.ConfigurationManager.AppSettings["GoogleKey"];
+                    settings.LanguageCode = googleLanguageDetector.GetGoogleLanguage().Code;
+                    settings.Latitude = System.Configuration.ConfigurationManager.AppSettings["Latitude"];
+                    settings.Longitude = System.Configuration.ConfigurationManager.AppSettings["Longitude"];
+                    settings.LocationsQueryString = System.Configuration.ConfigurationManager.AppSettings["LocationsQueryString"];
+
+                    settings.MinimumSearchStringLength = Consts.MinimumSearchStringLength;
+
+                    int minimumSearchStringLength;
+                    if (int.TryParse(System.Configuration.ConfigurationManager.AppSettings["MinimumSearchStringLength"],
+                        out minimumSearchStringLength))
+                        settings.MinimumSearchStringLength = minimumSearchStringLength;
                 }
 
-                return this.settings;
+                return settings;
             }
         }
 

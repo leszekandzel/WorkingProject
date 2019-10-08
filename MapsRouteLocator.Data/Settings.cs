@@ -17,5 +17,7 @@ namespace MapsRouteLocator.Data
         public string Latitude { get; set; }
 
         public string Longitude { get; set; }
+
+        public int MinimumSearchStringLength { get; set; }
     }
 }

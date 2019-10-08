@@ -16,10 +16,12 @@ namespace MapsRouteLocator.ViewModels
 {
     public class LocationInputViewModel : BindableBase
     {
-        public ILocationsDataProvider locationsDataProvider;
-        public LocationInputViewModel(ILocationsDataProvider locationsDataProvider)
+        private readonly ILocationsDataProvider locationsDataProvider;
+        private readonly ISettingsProvider settingsProvider;
+        public LocationInputViewModel(ILocationsDataProvider locationsDataProvider, ISettingsProvider settingsProvider)
         {
             this.locationsDataProvider = locationsDataProvider;
+            this.settingsProvider = settingsProvider;
             var myItems = new[] { "Apple", "Orange", "Cherry", "Banana" };
             ComboItems = CollectionViewSource.GetDefaultView(myItems);
         }
@@ -34,11 +36,8 @@ namespace MapsRouteLocator.ViewModels
             }
             set
             {
-                if (value.Length > 4)
+                if (value.Length > this.settingsProvider.Settings.MinimumSearchStringLength)
                 {
-
-
-
                     var result = locationsDataProvider.GetLocationsList(value.ToLower());
                     ComboItems.Filter = item => item.ToString().ToLower().Contains(value.ToLower());
                 }
