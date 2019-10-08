@@ -15,7 +15,7 @@
                 <ColumnDefinition Width="50px"></ColumnDefinition>
             </Grid.ColumnDefinitions>
         <Label Name="PrefixLabel" Grid.Column="0" Margin="0,0,10,0"></Label>
-        <ComboBox Grid.Column="1"></ComboBox>
+        <ComboBox Grid.Column="1" IsEditable="True"/>
         <Button Name="RemoveButton"  Grid.Column="2" Margin="10,0,0,0" Width="40" Click="RemoveButton_Click">-</Button>
     </Grid>
 </UserControl>

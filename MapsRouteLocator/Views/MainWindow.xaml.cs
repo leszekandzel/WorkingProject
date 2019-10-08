@@ -24,7 +24,7 @@ namespace MapsRouteLocator.Views
         {
             InitializeComponent();
 
-            //this.MapBrowser.Navigate("https://www.google.com/maps/@?api=1&map_action=map&key=AIzaSyDp4756MODkmIKp0R4AqIYADNWKv-qbYNE");
+            //this.MapBrowser.Navigate("https://www.google.com/maps/@?api=1&map_action=display&key=AIzaSyDp4756MODkmIKp0R4AqIYADNWKv-qbYNE");
         }
     }
 }
