@@ -26,6 +26,8 @@ namespace MapsRouteLocator.Business
                     this.settings.LanguageCode = googleLanguageDetector.GetGoogleLanguage().Code;
                     this.settings.Latitude = System.Configuration.ConfigurationManager.AppSettings["Latitude"];
                     this.settings.Longitude = System.Configuration.ConfigurationManager.AppSettings["Longitude"];
+                    this.settings.LocationsQueryString = System.Configuration.ConfigurationManager.AppSettings["LocationsQueryString"];
+                    
                 }
 
                 return this.settings;

@@ -8,6 +8,8 @@ namespace MapsRouteLocator.Data
 {
     public class Settings
     {
+        public string LocationsQueryString { get; set; }
+
         public string LanguageCode { get; set; }
 
         public string GoogleKey { get; set; }

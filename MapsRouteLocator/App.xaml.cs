@@ -32,9 +32,11 @@ namespace MapsRouteLocator
             base.OnStartup(e);
             unityContainer = new UnityContainer();
             unityContainer.RegisterType<ICultureInfoProvider, ICultureInfoProvider>();
-            unityContainer.RegisterType<MapsRouteLocator.Interfaces.ISettingsProvider, MapsRouteLocator.Business.SettingsProvider>();
+            unityContainer.RegisterType<ICultureInfoProvider, CultureInfoProvider>();
             unityContainer.RegisterType<IGoogleLanguageDetector, GoogleLanguageDetector>();
-            unityContainer.RegisterType<ILocationsDataProvider, LocationsDataProvider>();
+            unityContainer.RegisterType<ILocationsDataProvider, GoogleLocationsDataProvider>();
+            unityContainer.RegisterType<ISettingsProvider, MapsRouteLocator.Business.SettingsProvider>();
+            unityContainer.RegisterType<ILocationsQueryProvider, GoogleLocationsQueryProvider>();
             ViewModelLocationProvider.SetDefaultViewModelFactory(type => unityContainer.Resolve(type));
             var window = unityContainer.Resolve<MainWindow>();
             window.ShowDialog();

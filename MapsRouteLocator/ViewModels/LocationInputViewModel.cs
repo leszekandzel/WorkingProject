@@ -34,7 +34,14 @@ namespace MapsRouteLocator.ViewModels
             }
             set
             {
-                ComboItems.Filter = item => item.ToString().ToLower().Contains(value.ToLower());
+                if (value.Length > 4)
+                {
+
+
+
+                    var result = locationsDataProvider.GetLocationsList(value.ToLower());
+                    ComboItems.Filter = item => item.ToString().ToLower().Contains(value.ToLower());
+                }
             }
         }
     }

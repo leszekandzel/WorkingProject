@@ -44,9 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CultureInfoProvider.cs" />
-    <Compile Include="GeoCoordinateDetector.cs" />
     <Compile Include="GoogleLanguageDetector.cs" />
-    <Compile Include="LocationsDataProvider.cs" />
+    <Compile Include="GoogleLocationsDataProvider.cs" />
+    <Compile Include="GoogleLocationsQueryProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsProvider.cs" />
   </ItemGroup>
