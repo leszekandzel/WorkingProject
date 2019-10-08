@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MapsRouteLocator.ViewModels;
+using Unity;
 
 namespace MapsRouteLocator.Views
 {
@@ -23,8 +25,6 @@ namespace MapsRouteLocator.Views
         public MainWindow()
         {
             InitializeComponent();
-
-            //this.MapBrowser.Navigate("https://www.google.com/maps/@?api=1&map_action=display&key=AIzaSyDp4756MODkmIKp0R4AqIYADNWKv-qbYNE");
         }
     }
 }

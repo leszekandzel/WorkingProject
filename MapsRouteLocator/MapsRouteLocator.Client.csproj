@@ -140,9 +140,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MapsRouteLocator.Business\MapsRouteLocator.Business.csproj">
+      <Project>{2025182a-4e9f-4d0f-9158-2f238906fd94}</Project>
+      <Name>MapsRouteLocator.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MapsRouteLocator.Data\MapsRouteLocator.Data.csproj">
       <Project>{9d2f5f21-458f-46ed-bc0b-415f73a747d5}</Project>
       <Name>MapsRouteLocator.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MapsRouteLocator.Interfaces\MapsRouteLocator.Interfaces.csproj">
+      <Project>{070b2499-1a7e-4da3-9718-3d8574ddb1df}</Project>
+      <Name>MapsRouteLocator.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

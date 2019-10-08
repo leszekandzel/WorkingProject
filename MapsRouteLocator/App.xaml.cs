@@ -6,8 +6,14 @@ using System.Device.Location;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using MapsRouteLocator.Business;
+using MapsRouteLocator.Interfaces;
+using MapsRouteLocator.ViewModels;
 using MapsRouteLocator.Views;
+using Prism.Mvvm;
 using Unity;
+using Unity.Lifetime;
+
 
 namespace MapsRouteLocator
 {
@@ -16,14 +22,21 @@ namespace MapsRouteLocator
     /// </summary>
     public partial class App : Application
     {
-        private UnityContainer unityContainer;
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
-            this.unityContainer = new UnityContainer();
 
-            var window = new MainWindow();
+            
+            UnityContainer unityContainer;
+
+            base.OnStartup(e);
+            unityContainer = new UnityContainer();
+            unityContainer.RegisterType<ICultureInfoProvider, ICultureInfoProvider>();
+            unityContainer.RegisterType<MapsRouteLocator.Interfaces.ISettingsProvider, MapsRouteLocator.Business.SettingsProvider>();
+            unityContainer.RegisterType<IGoogleLanguageDetector, GoogleLanguageDetector>();
+            unityContainer.RegisterType<ILocationsDataProvider, LocationsDataProvider>();
+            ViewModelLocationProvider.SetDefaultViewModelFactory(type => unityContainer.Resolve(type));
+            var window = unityContainer.Resolve<MainWindow>();
             window.ShowDialog();
         }
     }

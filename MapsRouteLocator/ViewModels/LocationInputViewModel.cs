@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using MapsRouteLocator.Interfaces;
 using MapsRouteLocator.Views;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -15,8 +16,10 @@ namespace MapsRouteLocator.ViewModels
 {
     public class LocationInputViewModel : BindableBase
     {
-        public LocationInputViewModel()
+        public ILocationsDataProvider locationsDataProvider;
+        public LocationInputViewModel(ILocationsDataProvider locationsDataProvider)
         {
+            this.locationsDataProvider = locationsDataProvider;
             var myItems = new[] { "Apple", "Orange", "Cherry", "Banana" };
             ComboItems = CollectionViewSource.GetDefaultView(myItems);
         }
