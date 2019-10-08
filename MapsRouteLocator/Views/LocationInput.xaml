@@ -13,23 +13,14 @@
                 <ColumnDefinition Width="50px"></ColumnDefinition>
                 <ColumnDefinition Width="400px"></ColumnDefinition>
                 <ColumnDefinition Width="50px"></ColumnDefinition>
+                <ColumnDefinition Width="200px"></ColumnDefinition>
             </Grid.ColumnDefinitions>
         <Label Name="PrefixLabel" Grid.Column="0" Margin="0,0,10,0"></Label>
         <ComboBox Grid.Column="1" IsEditable="True" ItemsSource="{Binding ComboItems}"
                   Text="{Binding ComboText,Mode=OneWayToSource}">
-            <ComboBox.Triggers>
-                <EventTrigger RoutedEvent="TextBoxBase.TextChanged">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsDropDownOpen">
-                                <DiscreteBooleanKeyFrame Value="True"
-                                                         KeyTime="0:0:0" />
-                            </BooleanAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </ComboBox.Triggers>
+
         </ComboBox>
         <Button Name="RemoveButton"  Grid.Column="2" Margin="10,0,0,0" Width="40" Click="RemoveButton_Click">-</Button>
+        <TextBox Grid.Column="3" Name="TextBox"  Text="{Binding InputText, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:LocationInput}}}" ></TextBox>
     </Grid>
 </UserControl>

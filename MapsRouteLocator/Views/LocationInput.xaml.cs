@@ -29,6 +29,27 @@ namespace MapsRouteLocator.Views
             InitializeComponent();
         }
 
+        public static readonly DependencyProperty InputTextProperty =
+            DependencyProperty.Register(
+                nameof(InputText),
+                typeof(string),
+                typeof(LocationInput),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback(OnTextChanged))
+            );
+
+        public string InputText
+        {
+            get { return (string)GetValue(InputTextProperty); }
+            set
+            {
+                SetValue(InputTextProperty, value);
+            }
+        }
+
+        private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+       
+        }
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register(
                 nameof(Title), 
@@ -44,7 +65,6 @@ namespace MapsRouteLocator.Views
             set
             {
                 SetValue(TitleProperty, value);
-                
             }
         }
 

@@ -19,14 +19,13 @@ namespace MapsRouteLocator.ViewModels
         public ICommand CalculateCommand { get; }
         public ICommand RemoveButtonClickedCommand { get; }
 
-        public LocationData RouteFrom { get; set; }
-        public LocationData RouteTo { get; set; }
+        public string RouteFrom { get; set; }
+        public string RouteTo { get; set; }
 
         public NavigationPanelViewModel()
         {
+       
             this.routes = new ObservableCollection<LocationData>();
-            this.routes.Add(new LocationData());
-            this.routes.Add(new LocationData());
             this.AddNewRouteCommand = new DelegateCommand(this.AddNewViewRoute);
             this.CalculateCommand = new DelegateCommand(this.Calculate);
             this.RemoveButtonClickedCommand = new DelegateCommand(this.RemoveButtonClicked);
