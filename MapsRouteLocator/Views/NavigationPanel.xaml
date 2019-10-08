@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
         <ScrollViewer Grid.Row="0">
             <StackPanel>
-                <local:LocationInput Grid.Row="0" Margin="0,5,0,5" Title="von" RemoveButtonVisible="False" >
+                <local:LocationInput Grid.Row="0" Margin="0,5,0,5" Title="von" RemoveButtonVisible="False"  >
 
                 </local:LocationInput>
                 <Grid>
