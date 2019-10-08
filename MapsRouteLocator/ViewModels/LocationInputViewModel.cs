@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using MapsRouteLocator.Views;
+using Prism.Commands;
 using Prism.Mvvm;
 
 namespace MapsRouteLocator.ViewModels

@@ -20,6 +20,7 @@ namespace MapsRouteLocator.Views
     /// </summary>
     public partial class LocationInput : UserControl
     {
+        public event EventHandler RemoveButtonClicked;
         public LocationInput()
         {
             InitializeComponent();
@@ -72,6 +73,14 @@ namespace MapsRouteLocator.Views
         {
             LocationInput li = d as LocationInput;
             li.RemoveButton.Visibility = (bool)e.NewValue ? System.Windows.Visibility.Visible : Visibility.Hidden;
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.RemoveButtonClicked != null)
+            {
+                RemoveButtonClicked(this, EventArgs.Empty);
+            }
         }
     }
 }
