@@ -15,6 +15,7 @@ namespace MapsRouteLocator.ViewModels
     {
         private ObservableCollection<int> routes;
         public ICommand AddNewRouteCommand { get; }
+        public ICommand CalculateCommand { get; }
         public ICommand RemoveButtonClickedCommand { get; }
 
         public NavigationPanelViewModel()
@@ -23,12 +24,17 @@ namespace MapsRouteLocator.ViewModels
             this.routes.Add(1);
             this.routes.Add(2);
             this.AddNewRouteCommand = new DelegateCommand(this.AddNewViewRoute);
+            this.CalculateCommand = new DelegateCommand(this.Calculate);
             this.RemoveButtonClickedCommand = new DelegateCommand(this.RemoveButtonClicked);
         }
 
         private void AddNewViewRoute()
         {
             this.routes.Add(0);
+        }
+
+        private void Calculate()
+        {
         }
 
 

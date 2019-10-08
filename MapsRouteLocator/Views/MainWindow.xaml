@@ -15,7 +15,6 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        
         <views:NavigationPanel Grid.Row="0"></views:NavigationPanel>
         <WebBrowser Grid.Row="1" Name="MapBrowser" Margin ="10,10,10,10" utils:WebBrowserUtility.BindableSource="{Binding MapUrl, Mode=OneWay}" />
     </Grid>
