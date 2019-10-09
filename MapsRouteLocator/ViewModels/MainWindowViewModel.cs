@@ -3,15 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MapsRouteLocator.Events;
+using Prism.Events;
 using Prism.Mvvm;
 
 namespace MapsRouteLocator.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
+
+        IEventAggregator eventAggregator;
+        public MainWindowViewModel(IEventAggregator eventAggregator)
+        {
+            this.eventAggregator = eventAggregator;
+            this.eventAggregator.GetEvent<RouteCalculationRequestEvent>().Subscribe(this.CalculateRoute);
+        }
+
         public string Title
         {
             get { return "This is a title"; }
+        }
+
+        private void CalculateRoute(object o)
+        {
         }
 
         public string MapUrl

@@ -84,6 +84,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Events\RouteCalculationRequestEvent.cs" />
     <Compile Include="Utils\WebBrowserUtility.cs" />
     <Compile Include="ViewModels\LocationInputViewModel.cs" />
     <Compile Include="ViewModels\NavigationPanelViewModel.cs" />
@@ -157,5 +158,6 @@
       <Name>MapsRouteLocator.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

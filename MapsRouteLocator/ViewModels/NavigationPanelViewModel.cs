@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using MapsRouteLocator.Data;
+using MapsRouteLocator.Events;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 
 namespace MapsRouteLocator.ViewModels
@@ -21,10 +23,11 @@ namespace MapsRouteLocator.ViewModels
 
         public string RouteFrom { get; set; }
         public string RouteTo { get; set; }
+        private IEventAggregator eventAggregator;
 
-        public NavigationPanelViewModel()
+        public NavigationPanelViewModel(IEventAggregator eventAggregator)
         {
-       
+            this.eventAggregator = eventAggregator;
             this.routes = new ObservableCollection<LocationData>();
             this.AddNewRouteCommand = new DelegateCommand(this.AddNewViewRoute);
             this.CalculateCommand = new DelegateCommand(this.Calculate);
@@ -38,6 +41,7 @@ namespace MapsRouteLocator.ViewModels
 
         private void Calculate()
         {
+            this.eventAggregator.GetEvent<RouteCalculationRequestEvent>().Publish(null);
         }
 
 

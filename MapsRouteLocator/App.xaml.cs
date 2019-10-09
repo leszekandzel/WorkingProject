@@ -12,6 +12,7 @@ using MapsRouteLocator.Business;
 using MapsRouteLocator.Interfaces;
 using MapsRouteLocator.ViewModels;
 using MapsRouteLocator.Views;
+using Prism.Events;
 using Prism.Mvvm;
 using Unity;
 using Unity.Lifetime;
@@ -25,6 +26,7 @@ namespace MapsRouteLocator
     public partial class App : Application
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(App));
+        private readonly IEventAggregator eventAggregator = new EventAggregator();
         protected override void OnStartup(StartupEventArgs e)
         {
 
@@ -33,6 +35,7 @@ namespace MapsRouteLocator
 
             base.OnStartup(e);
             unityContainer = new UnityContainer();
+            unityContainer.RegisterInstance(eventAggregator);
             unityContainer.RegisterType<ICultureInfoProvider, ICultureInfoProvider>();
             unityContainer.RegisterType<ICultureInfoProvider, CultureInfoProvider>();
             unityContainer.RegisterType<IGoogleLanguageDetector, GoogleLanguageDetector>();

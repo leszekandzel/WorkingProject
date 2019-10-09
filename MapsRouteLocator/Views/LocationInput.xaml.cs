@@ -105,5 +105,11 @@ namespace MapsRouteLocator.Views
                 RemoveButtonClicked(this, EventArgs.Empty);
             }
         }
+
+        private void ComboBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            this.TextBox.Text = this.ComboBox.Text;
+            this.InputText = this.ComboBox.Text;
+        }
     }
 }
