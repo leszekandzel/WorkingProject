@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Consts.cs" />
     <Compile Include="LocationData.cs" />
+    <Compile Include="RouteCalculationRequestData.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="GoogleLanguage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

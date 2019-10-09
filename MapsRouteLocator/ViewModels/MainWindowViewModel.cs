@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MapsRouteLocator.Data;
 using MapsRouteLocator.Events;
 using Prism.Events;
 using Prism.Mvvm;
@@ -26,6 +27,7 @@ namespace MapsRouteLocator.ViewModels
 
         private void CalculateRoute(object o)
         {
+            var routeCalculationRequestData = o as RouteCalculationRequestData;
         }
 
         public string MapUrl

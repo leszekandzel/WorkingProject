@@ -41,7 +41,11 @@ namespace MapsRouteLocator.ViewModels
 
         private void Calculate()
         {
-            this.eventAggregator.GetEvent<RouteCalculationRequestEvent>().Publish(null);
+            var routeCalculationRequestData = new RouteCalculationRequestData();
+            routeCalculationRequestData.RouteFrom = new LocationData(){Name = this.RouteFrom}; 
+            routeCalculationRequestData.RouteTo = new LocationData(){Name = this.RouteTo};
+
+            this.eventAggregator.GetEvent<RouteCalculationRequestEvent>().Publish(routeCalculationRequestData);
         }
 
 
