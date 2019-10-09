@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MapsRouteLocator.Interfaces;
+using System.Web;
 
 namespace MapsRouteLocator.Business
 {
@@ -18,7 +19,7 @@ namespace MapsRouteLocator.Business
 
         public string GetLocationsQuery(string prefix)
         {
-            var locationsQuery = string.Format(settingsProvider.Settings.LocationsQueryString, prefix,
+            var locationsQuery = string.Format(settingsProvider.Settings.LocationsTemplateUrl, HttpUtility.UrlEncode(prefix),
                 settingsProvider.Settings.LanguageCode, settingsProvider.Settings.GoogleKey);
 
             return locationsQuery;

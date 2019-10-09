@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MapsRouteLocator.Data;
 using MapsRouteLocator.Events;
+using MapsRouteLocator.Interfaces;
 using Prism.Events;
 using Prism.Mvvm;
 
@@ -14,27 +15,30 @@ namespace MapsRouteLocator.ViewModels
     {
 
         IEventAggregator eventAggregator;
-        public MainWindowViewModel(IEventAggregator eventAggregator)
+        private IRoutesQueryProvider routesQueryProvider;
+        public MainWindowViewModel(IEventAggregator eventAggregator, IRoutesQueryProvider routesQueryProvider)
         {
             this.eventAggregator = eventAggregator;
+            this.routesQueryProvider = routesQueryProvider;
             this.eventAggregator.GetEvent<RouteCalculationRequestEvent>().Subscribe(this.CalculateRoute);
-        }
-
-        public string Title
-        {
-            get { return "This is a title"; }
         }
 
         private void CalculateRoute(object o)
         {
             var routeCalculationRequestData = o as RouteCalculationRequestData;
+            var requestUrl = this.routesQueryProvider.GetRoutesQuery(routeCalculationRequestData);
+            this.MapUrl = requestUrl;
+
         }
 
+        private string mapUrl = "https://www.google.com/maps/@?api=1&map_action=map&key=AIzaSyDp4756MODkmIKp0R4AqIYADNWKv-qbYNE";
         public string MapUrl
         {
-            get
+            get { return this.mapUrl; }
+            set
             {
-                return "https://www.google.com/maps/@?api=1&map_action=map&key=AIzaSyDp4756MODkmIKp0R4AqIYADNWKv-qbYNE";
+                this.mapUrl = value;
+                this.RaisePropertyChanged("MapUrl");
             }
         }
     }

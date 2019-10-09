@@ -10,7 +10,7 @@ using MapsRouteLocator.Interfaces;
 
 namespace MapsRouteLocator.Business
 {
-    public class GoogleLanguageDetector : IGoogleLanguageDetector   
+    public class GoogleLanguageDetector : ILanguageDetector   
     {
         private readonly ICultureInfoProvider cultureInfoProvider;
         private static GoogleLanguage googleLanguage;

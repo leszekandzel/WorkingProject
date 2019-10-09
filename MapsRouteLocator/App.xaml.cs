@@ -38,10 +38,11 @@ namespace MapsRouteLocator
             unityContainer.RegisterInstance(eventAggregator);
             unityContainer.RegisterType<ICultureInfoProvider, ICultureInfoProvider>();
             unityContainer.RegisterType<ICultureInfoProvider, CultureInfoProvider>();
-            unityContainer.RegisterType<IGoogleLanguageDetector, GoogleLanguageDetector>();
+            unityContainer.RegisterType<ILanguageDetector, GoogleLanguageDetector>();
             unityContainer.RegisterType<ILocationsDataProvider, GoogleLocationsDataProvider>();
             unityContainer.RegisterType<ISettingsProvider, MapsRouteLocator.Business.SettingsProvider>();
             unityContainer.RegisterType<ILocationsQueryProvider, GoogleLocationsQueryProvider>();
+            unityContainer.RegisterType<IRoutesQueryProvider, GoogleRoutesQueryProvider>();
             ViewModelLocationProvider.SetDefaultViewModelFactory(type => unityContainer.Resolve(type));
             var window = unityContainer.Resolve<MainWindow>();
             window.ShowDialog();

@@ -42,9 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICultureInfoProvider.cs" />
-    <Compile Include="IGoogleLanguageDetector.cs" />
+    <Compile Include="ILanguageDetector.cs" />
     <Compile Include="ILocationsDataProvider.cs" />
     <Compile Include="ILocationsQueryProvider.cs" />
+    <Compile Include="IRoutesQueryProvider.cs" />
     <Compile Include="ISettingsProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -7,8 +7,8 @@ namespace MapsRouteLocator.Business
 {
     public class SettingsProvider : ISettingsProvider
     {
-        private readonly IGoogleLanguageDetector googleLanguageDetector;
-        public SettingsProvider(IGoogleLanguageDetector googleLanguageDetector)
+        private readonly ILanguageDetector googleLanguageDetector;
+        public SettingsProvider(ILanguageDetector googleLanguageDetector)
         {
             this.googleLanguageDetector = googleLanguageDetector;
         }
@@ -27,7 +27,8 @@ namespace MapsRouteLocator.Business
                     settings.LanguageCode = googleLanguageDetector.GetGoogleLanguage().Code;
                     settings.Latitude = System.Configuration.ConfigurationManager.AppSettings["Latitude"];
                     settings.Longitude = System.Configuration.ConfigurationManager.AppSettings["Longitude"];
-                    settings.LocationsQueryString = System.Configuration.ConfigurationManager.AppSettings["LocationsQueryString"];
+                    settings.LocationsTemplateUrl = System.Configuration.ConfigurationManager.AppSettings["LocationsTemplateUrl"];
+                    settings.DirectionsTemplateUrl = System.Configuration.ConfigurationManager.AppSettings["DirectionsTemplateUrl"];
 
                     settings.MinimumSearchStringLength = Consts.MinimumSearchStringLength;
 

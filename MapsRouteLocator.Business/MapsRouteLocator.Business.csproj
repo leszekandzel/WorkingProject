@@ -39,6 +39,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Device" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,6 +52,7 @@
     <Compile Include="GoogleLanguageDetector.cs" />
     <Compile Include="GoogleLocationsDataProvider.cs" />
     <Compile Include="GoogleLocationsQueryProvider.cs" />
+    <Compile Include="GoogleRoutesQueryProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsProvider.cs" />
   </ItemGroup>

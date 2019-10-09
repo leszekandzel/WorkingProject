@@ -7,7 +7,7 @@ using MapsRouteLocator.Data;
 
 namespace MapsRouteLocator.Interfaces
 {
-    public interface IGoogleLanguageDetector
+    public interface ILanguageDetector
     {
         GoogleLanguage GetGoogleLanguage();
     }
