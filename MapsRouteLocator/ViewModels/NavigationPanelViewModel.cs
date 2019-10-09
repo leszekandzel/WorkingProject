@@ -41,6 +41,11 @@ namespace MapsRouteLocator.ViewModels
 
         private void Calculate()
         {
+            if (!this.ValidateCalculationRequest())
+            {
+                return;
+            }
+
             var routeCalculationRequestData = new RouteCalculationRequestData();
             routeCalculationRequestData.RouteFrom = new LocationData(){Name = this.RouteFrom}; 
             routeCalculationRequestData.RouteTo = new LocationData(){Name = this.RouteTo};
@@ -48,6 +53,42 @@ namespace MapsRouteLocator.ViewModels
             this.eventAggregator.GetEvent<RouteCalculationRequestEvent>().Publish(routeCalculationRequestData);
         }
 
+        private bool ValidateCalculationRequest()
+        {
+            if (string.IsNullOrEmpty(this.RouteFrom) ||
+                string.IsNullOrEmpty(this.RouteTo))
+            {
+                this.IsErrorMessageVisible = true;
+                this.ErrorMessage = "Werte von und nach sollen nicht leer sein.";
+                return false;
+            }
+            this.IsErrorMessageVisible = false;
+            this.ErrorMessage = string.Empty;
+            return true;
+        }
+
+
+        private bool isErrorMessageVisible;
+        public bool IsErrorMessageVisible
+        {
+            get => this.isErrorMessageVisible;
+            private set
+            {
+                this.isErrorMessageVisible = value;
+                this.RaisePropertyChanged("IsErrorMessageVisible");
+            }
+        }
+
+        private string errorMessage;
+        public string ErrorMessage
+        {
+            get => this.errorMessage;
+            private set
+            {
+                this.errorMessage = value;
+                this.RaisePropertyChanged("ErrorMessage");
+            }
+        }
 
         public ObservableCollection<LocationData> ViaRoutes
         {
