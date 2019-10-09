@@ -50,6 +50,12 @@ namespace MapsRouteLocator.ViewModels
 
                 var result = await locationsDataProvider.GetLocationsListAsync(prefix.ToLower());
                 ComboItems.Clear();
+
+                if (result == null)
+                {
+                    return;
+                }
+
                 foreach (var location in result)
                 {
                     ComboItems.Add(location.Name);
