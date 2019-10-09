@@ -10,6 +10,7 @@ using MapsRouteLocator.Data;
 using MapsRouteLocator.Events;
 using Prism.Commands;
 using Prism.Events;
+using Prism.Interactivity;
 using Prism.Mvvm;
 
 namespace MapsRouteLocator.ViewModels
@@ -19,7 +20,7 @@ namespace MapsRouteLocator.ViewModels
         private ObservableCollection<LocationData> routes;
         public ICommand AddNewRouteCommand { get; }
         public ICommand CalculateCommand { get; }
-        public ICommand RemoveButtonClickedCommand { get; }
+        public ICommand RemoveViaLocationCommand { get; }
 
         public string RouteFrom { get; set; }
         public string RouteTo { get; set; }
@@ -31,7 +32,12 @@ namespace MapsRouteLocator.ViewModels
             this.routes = new ObservableCollection<LocationData>();
             this.AddNewRouteCommand = new DelegateCommand(this.AddNewViewRoute);
             this.CalculateCommand = new DelegateCommand(this.Calculate);
-            this.RemoveButtonClickedCommand = new DelegateCommand(this.RemoveButtonClicked);
+   
+            this.RemoveViaLocationCommand = new DelegateCommand<object>(this.RemoveViaLocation);
+        }
+
+        public void rbc(object sender, RoutedEventArgs e)
+        {
         }
 
         private void AddNewViewRoute()
@@ -98,9 +104,10 @@ namespace MapsRouteLocator.ViewModels
             }
         }
 
-        public void RemoveButtonClicked()
+        public void RemoveViaLocation(object parameter)
         {
-            
+            var locationData = parameter as LocationData;
+            this.routes.Remove(locationData);
         }
     }
 }

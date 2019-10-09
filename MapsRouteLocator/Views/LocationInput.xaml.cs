@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MapsRouteLocator.ViewModels;
+using Prism.Events;
 using Unity;
 
 namespace MapsRouteLocator.Views
@@ -23,7 +24,6 @@ namespace MapsRouteLocator.Views
     public partial class LocationInput : UserControl
     {
         public event EventHandler RemoveButtonClicked;
-
         public LocationInput()
         {
             InitializeComponent();

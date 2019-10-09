@@ -7,6 +7,7 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:viewModels="clr-namespace:MapsRouteLocator.ViewModels"
+             xmlns:data="clr-namespace:MapsRouteLocator.Data;assembly=MapsRouteLocator.Data"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Height="200">
@@ -35,18 +36,21 @@
                     <Label Grid.Column="0" >via</Label>
                     <Button Grid.Column="1" Margin="10,0,0,0" Width="40" HorizontalAlignment="Left" Command="{Binding AddNewRouteCommand}">+</Button>
                 </Grid>
-                <ItemsControl ItemsSource="{Binding Path=ViaRoutes}">
-
+                <ItemsControl ItemsSource="{Binding ViaRoutes}">
                     <ItemsControl.ItemTemplate>
+
                         <DataTemplate>
-                            <local:LocationInput Grid.Row="1" Margin="0,5,0,5" Title="via"  >
+                        <StackPanel x:Name="StackPanel" >
+                            <local:LocationInput Grid.Row="1" Margin="0,5,0,5" Title="via" InputText="{Binding Path=DataContext.Name, ElementName=StackPanel, Mode=TwoWay}" >
+                                
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="RemoveButtonClicked">
-                                        <prism:InvokeCommandAction Command="{Binding Path=RemoveButtonClickedCommand, RelativeSource={RelativeSource AncestorType=viewModels:NavigationPanelViewModel}, Mode=Default}" />
+                                            <i:InvokeCommandAction CommandParameter="{Binding Path=DataContext, ElementName=StackPanel, Mode=Default}" Command="{Binding Path=DataContext.RemoveViaLocationCommand, ElementName=root, Mode=Default}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </local:LocationInput>
-                        </DataTemplate>
+                        </StackPanel>
+                    </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
                 <local:LocationInput Grid.Row="1" Margin="0,5,0,5" Title="nach" RemoveButtonVisible="False"  InputText="{Binding ElementName=root, Mode=TwoWay, Path=DataContext.RouteTo}"></local:LocationInput>
