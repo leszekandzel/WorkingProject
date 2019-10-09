@@ -19,10 +19,17 @@ namespace MapsRouteLocator.Business
 
         public string GetRoutesQuery(RouteCalculationRequestData routeCalculationRequestData)
         {
+            var waypoints = string.Empty;
+            if (routeCalculationRequestData.ViaStops != null && routeCalculationRequestData.ViaStops.Any())
+            {
+                waypoints = String.Join(",", routeCalculationRequestData.ViaStops.Select(x => HttpUtility.UrlEncode(x.Name)).ToArray());
+            }
+
             var retUrl = String.Format(this.settingsProvider.Settings.DirectionsTemplateUrl,
                 HttpUtility.UrlEncode (routeCalculationRequestData.RouteFrom.Name), 
                 HttpUtility.UrlEncode(routeCalculationRequestData.RouteTo.Name),
-                this.settingsProvider.Settings.GoogleKey);
+                this.settingsProvider.Settings.GoogleKey,
+                waypoints);
 
             return retUrl;
         }

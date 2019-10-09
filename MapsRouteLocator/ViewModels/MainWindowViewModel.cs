@@ -31,6 +31,7 @@ namespace MapsRouteLocator.ViewModels
             this.MapUrl = requestUrl;
         }
 
+        //private string mapUrl = "https://maps.googleapis.com/maps/api/staticmap?center=Switzerland&size=5000x400&zoom=7&maptype=roadmap&key=AIzaSyDp4756MODkmIKp0R4AqIYADNWKv-qbYNE";
         private string mapUrl = "https://www.google.com/maps/@?api=1&map_action=map&key=AIzaSyDp4756MODkmIKp0R4AqIYADNWKv-qbYNE";
         public string MapUrl
         {

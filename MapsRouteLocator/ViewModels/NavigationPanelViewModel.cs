@@ -17,7 +17,7 @@ namespace MapsRouteLocator.ViewModels
 {
     public class NavigationPanelViewModel : BindableBase
     {
-        private ObservableCollection<LocationData> routes;
+        private ObservableCollection<LocationData> viaStops;
         public ICommand AddNewRouteCommand { get; }
         public ICommand CalculateCommand { get; }
         public ICommand RemoveViaLocationCommand { get; }
@@ -29,20 +29,16 @@ namespace MapsRouteLocator.ViewModels
         public NavigationPanelViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
-            this.routes = new ObservableCollection<LocationData>();
+            this.viaStops = new ObservableCollection<LocationData>();
             this.AddNewRouteCommand = new DelegateCommand(this.AddNewViewRoute);
             this.CalculateCommand = new DelegateCommand(this.Calculate);
    
             this.RemoveViaLocationCommand = new DelegateCommand<object>(this.RemoveViaLocation);
         }
 
-        public void rbc(object sender, RoutedEventArgs e)
-        {
-        }
-
         private void AddNewViewRoute()
         {
-            this.routes.Add(new LocationData());
+            this.viaStops.Add(new LocationData());
         }
 
         private void Calculate()
@@ -55,6 +51,7 @@ namespace MapsRouteLocator.ViewModels
             var routeCalculationRequestData = new RouteCalculationRequestData();
             routeCalculationRequestData.RouteFrom = new LocationData(){Name = this.RouteFrom}; 
             routeCalculationRequestData.RouteTo = new LocationData(){Name = this.RouteTo};
+            routeCalculationRequestData.ViaStops = this.viaStops.Where(x => !string.IsNullOrEmpty(x.Name)).ToArray();
 
             this.eventAggregator.GetEvent<RouteCalculationRequestEvent>().Publish(routeCalculationRequestData);
         }
@@ -96,18 +93,18 @@ namespace MapsRouteLocator.ViewModels
             }
         }
 
-        public ObservableCollection<LocationData> ViaRoutes
+        public ObservableCollection<LocationData> ViaStops
         {
             get
             {
-                return routes;
+                return viaStops;
             }
         }
 
         public void RemoveViaLocation(object parameter)
         {
             var locationData = parameter as LocationData;
-            this.routes.Remove(locationData);
+            this.viaStops.Remove(locationData);
         }
     }
 }
