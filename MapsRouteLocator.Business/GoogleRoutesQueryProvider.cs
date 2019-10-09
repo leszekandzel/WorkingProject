@@ -11,7 +11,7 @@ namespace MapsRouteLocator.Business
 {
     public class GoogleRoutesQueryProvider : IRoutesQueryProvider
     {
-        private ISettingsProvider settingsProvider;
+        private readonly ISettingsProvider settingsProvider;
         public GoogleRoutesQueryProvider(ISettingsProvider settingsProvider)
         {
             this.settingsProvider = settingsProvider;
@@ -22,10 +22,10 @@ namespace MapsRouteLocator.Business
             var waypoints = string.Empty;
             if (routeCalculationRequestData.ViaStops != null && routeCalculationRequestData.ViaStops.Any())
             {
-                waypoints = String.Join(",", routeCalculationRequestData.ViaStops.Select(x => HttpUtility.UrlEncode(x.Name)).ToArray());
+                waypoints = string.Join(",", routeCalculationRequestData.ViaStops.Select(x => HttpUtility.UrlEncode(x.Name)).ToArray());
             }
 
-            var retUrl = String.Format(this.settingsProvider.Settings.DirectionsTemplateUrl,
+            var retUrl = string.Format(this.settingsProvider.Settings.DirectionsTemplateUrl,
                 HttpUtility.UrlEncode (routeCalculationRequestData.RouteFrom.Name), 
                 HttpUtility.UrlEncode(routeCalculationRequestData.RouteTo.Name),
                 this.settingsProvider.Settings.GoogleKey,

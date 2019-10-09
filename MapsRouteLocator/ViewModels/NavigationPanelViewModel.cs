@@ -62,6 +62,8 @@ namespace MapsRouteLocator.ViewModels
                 string.IsNullOrEmpty(this.RouteTo))
             {
                 this.IsErrorMessageVisible = true;
+
+                // Of course strings should be in resources, localizable.
                 this.ErrorMessage = "Werte von und nach sollen nicht leer sein.";
                 return false;
             }

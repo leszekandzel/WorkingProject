@@ -24,6 +24,7 @@ namespace MapsRouteLocator.Business
             this.googleLocationsQueryProvider = googleLocationsQueryProvider;
         }
 
+        // Having more time I would redesign it. There is an option to get JSon format. I would have to try it somehow...
         public async Task<IEnumerable<LocationData>> GetLocationsListAsync(string prefix)
         {
             var queryString = this.googleLocationsQueryProvider.GetLocationsQuery(prefix);

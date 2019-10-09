@@ -7,6 +7,9 @@ using MapsRouteLocator.Data;
 
 namespace MapsRouteLocator.Interfaces
 {
+    /// <summary>
+    /// Simple interface to fetch the routes from data source (google maps)
+    /// </summary>
     public interface IRoutesQueryProvider
     {
         string GetRoutesQuery(RouteCalculationRequestData routeCalculationRequestData);

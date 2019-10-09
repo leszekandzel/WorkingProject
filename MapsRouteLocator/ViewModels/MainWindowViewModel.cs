@@ -31,7 +31,10 @@ namespace MapsRouteLocator.ViewModels
             this.MapUrl = requestUrl;
         }
 
+        // I left it as possible option - here the map does not show overlays, but still it is ugly :(
         //private string mapUrl = "https://maps.googleapis.com/maps/api/staticmap?center=Switzerland&size=5000x400&zoom=7&maptype=roadmap&key=AIzaSyDp4756MODkmIKp0R4AqIYADNWKv-qbYNE";
+
+        // This should be done also as the other parameters are done (app.config), but let's do it in next version.
         private string mapUrl = "https://www.google.com/maps/@?api=1&map_action=map&key=AIzaSyDp4756MODkmIKp0R4AqIYADNWKv-qbYNE";
         public string MapUrl
         {

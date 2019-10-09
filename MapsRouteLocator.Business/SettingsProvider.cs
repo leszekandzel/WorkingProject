@@ -21,16 +21,18 @@ namespace MapsRouteLocator.Business
             {
                 if (settings == null)
                 {
-                    settings = new Settings();
+                    settings = new Settings
+                    {
+                        GoogleKey = System.Configuration.ConfigurationManager.AppSettings["GoogleKey"],
+                        LanguageCode = googleLanguageDetector.GetGoogleLanguage().Code,
+                        Latitude = System.Configuration.ConfigurationManager.AppSettings["Latitude"],
+                        Longitude = System.Configuration.ConfigurationManager.AppSettings["Longitude"],
+                        LocationsTemplateUrl = System.Configuration.ConfigurationManager.AppSettings["LocationsTemplateUrl"],
+                        DirectionsTemplateUrl = System.Configuration.ConfigurationManager.AppSettings["DirectionsTemplateUrl"],
+                        MinimumSearchStringLength = Consts.MinimumSearchStringLength
+                    };
 
-                    settings.GoogleKey = System.Configuration.ConfigurationManager.AppSettings["GoogleKey"];
-                    settings.LanguageCode = googleLanguageDetector.GetGoogleLanguage().Code;
-                    settings.Latitude = System.Configuration.ConfigurationManager.AppSettings["Latitude"];
-                    settings.Longitude = System.Configuration.ConfigurationManager.AppSettings["Longitude"];
-                    settings.LocationsTemplateUrl = System.Configuration.ConfigurationManager.AppSettings["LocationsTemplateUrl"];
-                    settings.DirectionsTemplateUrl = System.Configuration.ConfigurationManager.AppSettings["DirectionsTemplateUrl"];
 
-                    settings.MinimumSearchStringLength = Consts.MinimumSearchStringLength;
 
                     int minimumSearchStringLength;
                     if (int.TryParse(System.Configuration.ConfigurationManager.AppSettings["MinimumSearchStringLength"],
@@ -40,12 +42,6 @@ namespace MapsRouteLocator.Business
 
                 return settings;
             }
-        }
-
-        public void UpdateGeoLocation(string latitude, string longitude)
-        {
-            this.Settings.Latitude = latitude;
-            this.Settings.Longitude = longitude;
         }
     }
 }

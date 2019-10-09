@@ -8,6 +8,7 @@ using System.Windows.Controls;
 
 namespace MapsRouteLocator.Utils
 {
+    // This code has been taken from Internet and I am not an author of it.
     public static class WebBrowserUtility
     {
         public static readonly DependencyProperty BindableSourceProperty =

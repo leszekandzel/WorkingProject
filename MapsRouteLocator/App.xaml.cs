@@ -29,12 +29,10 @@ namespace MapsRouteLocator
         private readonly IEventAggregator eventAggregator = new EventAggregator();
         protected override void OnStartup(StartupEventArgs e)
         {
-
             BasicConfigurator.Configure();
-            UnityContainer unityContainer;
 
             base.OnStartup(e);
-            unityContainer = new UnityContainer();
+            var unityContainer = new UnityContainer();
             unityContainer.RegisterInstance(eventAggregator);
             unityContainer.RegisterType<ICultureInfoProvider, ICultureInfoProvider>();
             unityContainer.RegisterType<ICultureInfoProvider, CultureInfoProvider>();
