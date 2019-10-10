@@ -62,7 +62,7 @@ namespace MapsRouteLocator.ViewModels
             routeCalculationRequestData.RouteTo = new LocationData(){Name = this.RouteTo};
             routeCalculationRequestData.ViaStops = this.viaStops.Where(x => !string.IsNullOrEmpty(x.Name)).ToArray();
 
-            if (this.ValidateRoutesFound(routeCalculationRequestData))
+            if (!this.ValidateRoutesFound(routeCalculationRequestData))
             {
                 return;
             }
