@@ -29,7 +29,7 @@ namespace MapsRouteLocator.Business
         {
             var queryString = this.googleLocationsQueryProvider.GetLocationsQuery(prefix);
 
-            DataSet ds = new DataSet();
+            var ds = new DataSet();
 
             HttpWebRequest request;
             WebResponse response = null;
@@ -37,10 +37,10 @@ namespace MapsRouteLocator.Business
             {
                 request = (HttpWebRequest)WebRequest.Create(queryString);
                 response = await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, request);
-                Stream dataStream = response.GetResponseStream();
+                var dataStream = response.GetResponseStream();
                 
-                StreamReader sreader = new StreamReader(dataStream);
-                string responsereader = sreader.ReadToEnd();
+                var reader = new StreamReader(dataStream);
+                var responsereader = reader.ReadToEnd();
                 ds.ReadXml(new XmlTextReader(new StringReader(responsereader)));
             }
             catch (Exception ex)
