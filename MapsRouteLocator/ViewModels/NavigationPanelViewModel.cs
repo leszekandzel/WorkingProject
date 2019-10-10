@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Windows;
 using System.Windows.Input;
 using MapsRouteLocator.Data;
 using MapsRouteLocator.Events;
+using MapsRouteLocator.Interfaces;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Interactivity;
@@ -24,11 +26,16 @@ namespace MapsRouteLocator.ViewModels
 
         public string RouteFrom { get; set; }
         public string RouteTo { get; set; }
-        private IEventAggregator eventAggregator;
+        private readonly IEventAggregator eventAggregator;
+        private readonly ISettingsProvider settingsProvider;
+        private readonly ILocationsRepository locationsRepository;
 
-        public NavigationPanelViewModel(IEventAggregator eventAggregator)
+        public NavigationPanelViewModel(IEventAggregator eventAggregator, ISettingsProvider settingsProvider, ILocationsRepository locationsRepository)
         {
             this.eventAggregator = eventAggregator;
+            this.settingsProvider = settingsProvider;
+            this.locationsRepository = locationsRepository;
+
             this.viaStops = new ObservableCollection<LocationData>();
             this.AddNewRouteCommand = new DelegateCommand(this.AddNewViewRoute);
             this.CalculateCommand = new DelegateCommand(this.Calculate);
@@ -54,6 +61,29 @@ namespace MapsRouteLocator.ViewModels
             routeCalculationRequestData.ViaStops = this.viaStops.Where(x => !string.IsNullOrEmpty(x.Name)).ToArray();
 
             this.eventAggregator.GetEvent<RouteCalculationRequestEvent>().Publish(routeCalculationRequestData);
+            if (this.settingsProvider.Settings.UseLocalSearchRepository)
+            {
+                var locationsToInsertToRepository =
+                    this.GetLocationsFromCalculationRequestData(routeCalculationRequestData);
+
+                if (this.locationsRepository.MemorizeLocations(locationsToInsertToRepository))
+                {
+                    this.eventAggregator.GetEvent<LocationsSetChangedEvent>().Publish(locationsRepository.GetLocations());
+                }
+            } 
+        }
+
+        private string[] GetLocationsFromCalculationRequestData(RouteCalculationRequestData routeCalculationRequestData)
+        {
+            List<string> list = new List<string>();
+            list.Add(routeCalculationRequestData.RouteFrom.Name);
+            list.Add(routeCalculationRequestData.RouteTo.Name);
+            foreach (var viaStrop in routeCalculationRequestData.ViaStops)
+            {
+                list.Add(viaStrop.Name);
+            }
+
+            return list.Where(x => !string.IsNullOrEmpty(x)).ToArray();
         }
 
         private bool ValidateCalculationRequest()

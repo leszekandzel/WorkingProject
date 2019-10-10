@@ -21,5 +21,10 @@ namespace MapsRouteLocator.Data
         public string Longitude { get; set; }
 
         public int MinimumSearchStringLength { get; set; }
+
+        public string SearchHistoryLocationString { get; set; }
+
+        public bool UseLocalSearchRepository { get; set; }
+        
     }
 }

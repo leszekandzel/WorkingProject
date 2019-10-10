@@ -21,6 +21,10 @@ namespace MapsRouteLocator.Business
             {
                 if (settings == null)
                 {
+                    var useLocalSearchRepository =
+                        System.Configuration.ConfigurationManager.AppSettings["UseLocalSearchRepository"] == "1" ||
+                        System.Configuration.ConfigurationManager.AppSettings["UseLocalSearchRepository"]
+                            .ToLower() == "yes";
                     settings = new Settings
                     {
                         GoogleKey = System.Configuration.ConfigurationManager.AppSettings["GoogleKey"],
@@ -29,6 +33,8 @@ namespace MapsRouteLocator.Business
                         Longitude = System.Configuration.ConfigurationManager.AppSettings["Longitude"],
                         LocationsTemplateUrl = System.Configuration.ConfigurationManager.AppSettings["LocationsTemplateUrl"],
                         DirectionsTemplateUrl = System.Configuration.ConfigurationManager.AppSettings["DirectionsTemplateUrl"],
+                        SearchHistoryLocationString = System.Configuration.ConfigurationManager.AppSettings["SearchHistoryLocationString"],
+                        UseLocalSearchRepository = useLocalSearchRepository,
                         MinimumSearchStringLength = Consts.MinimumSearchStringLength
                     };
 

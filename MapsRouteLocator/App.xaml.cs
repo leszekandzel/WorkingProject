@@ -41,6 +41,9 @@ namespace MapsRouteLocator
             unityContainer.RegisterType<ISettingsProvider, MapsRouteLocator.Business.SettingsProvider>();
             unityContainer.RegisterType<ILocationsQueryProvider, GoogleLocationsQueryProvider>();
             unityContainer.RegisterType<IRoutesQueryProvider, GoogleRoutesQueryProvider>();
+            unityContainer.RegisterType<ISearchHistoryReader, SearchHistoryReader>();
+            unityContainer.RegisterType<ISearchHistoryWriter, SearchHistoryWriter>();
+            unityContainer.RegisterType<ILocationsRepository, LocationsRepository>();
             ViewModelLocationProvider.SetDefaultViewModelFactory(type => unityContainer.Resolve(type));
             var window = unityContainer.Resolve<MainWindow>();
             window.ShowDialog();

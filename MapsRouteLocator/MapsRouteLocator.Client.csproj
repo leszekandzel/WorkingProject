@@ -84,6 +84,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Events\LocationsSetChangedEvent.cs" />
     <Compile Include="Events\RouteCalculationRequestEvent.cs" />
     <Compile Include="Utils\WebBrowserUtility.cs" />
     <Compile Include="ViewModels\LocationInputViewModel.cs" />

@@ -17,7 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapsRouteLocator.Client.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapsRouteLocator.Interfaces", "MapsRouteLocator.Interfaces\MapsRouteLocator.Interfaces.csproj", "{070B2499-1A7E-4DA3-9718-3D8574DDB1DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapsRouteLocator.Business.Tests", "MapsRouteLocator.Business.Tests\MapsRouteLocator.Business.Tests.csproj", "{3FAD22E5-BAD9-4E28-82D8-B00899DAFCD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapsRouteLocator.Business.Tests", "MapsRouteLocator.Business.Tests\MapsRouteLocator.Business.Tests.csproj", "{3FAD22E5-BAD9-4E28-82D8-B00899DAFCD1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{27F9C31C-EA2F-40D4-A220-A143634BB162}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

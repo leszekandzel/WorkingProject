@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using MapsRouteLocator.Events;
 using MapsRouteLocator.Interfaces;
 using MapsRouteLocator.Views;
 using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 
 namespace MapsRouteLocator.ViewModels
@@ -19,13 +21,22 @@ namespace MapsRouteLocator.ViewModels
     {
         private readonly ILocationsDataProvider locationsDataProvider;
         private readonly ISettingsProvider settingsProvider;
+        private readonly IEventAggregator eventAggregator;
+        private readonly ILocationsRepository locationsRepository;
         public ObservableCollection<string> ComboItems { get; set; }
 
-        public LocationInputViewModel(ILocationsDataProvider locationsDataProvider, ISettingsProvider settingsProvider)
+        public LocationInputViewModel(ILocationsDataProvider locationsDataProvider, ISettingsProvider settingsProvider, IEventAggregator eventAggregator, ILocationsRepository locationsRepository)
         {
             this.ComboItems = new ObservableCollection<string>();
             this.locationsDataProvider = locationsDataProvider;
             this.settingsProvider = settingsProvider;
+            this.eventAggregator = eventAggregator;
+            this.locationsRepository = locationsRepository;
+            if (this.settingsProvider.Settings.UseLocalSearchRepository)
+            {
+                this.eventAggregator.GetEvent<LocationsSetChangedEvent>().Subscribe(this.RepopulateLocationsSet);
+                this.RepopulateLocationsSet(this.locationsRepository.GetLocations());
+            }
         }
 
         private string comboBoxText;
@@ -35,7 +46,17 @@ namespace MapsRouteLocator.ViewModels
             set
             {
                 this.comboBoxText = value;
-                this.FetchLocations(value);
+                if (!this.settingsProvider.Settings.UseLocalSearchRepository)
+                    this.FetchLocations(value);
+            }
+        }
+
+        private void RepopulateLocationsSet(IEnumerable<string> locationsSet)
+        {
+            ComboItems.Clear();
+            foreach (var location in locationsSet)
+            {
+                ComboItems.Add(location);
             }
         }
 
