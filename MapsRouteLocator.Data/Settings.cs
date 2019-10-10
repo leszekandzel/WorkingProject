@@ -12,6 +12,8 @@ namespace MapsRouteLocator.Data
 
         public string DirectionsTemplateUrl { get; set; }
 
+        public string DirectionsCheckTemplateUrl { get; set; }
+
         public string LanguageCode { get; set; }
 
         public string GoogleKey { get; set; }

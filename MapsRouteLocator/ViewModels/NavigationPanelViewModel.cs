@@ -29,12 +29,14 @@ namespace MapsRouteLocator.ViewModels
         private readonly IEventAggregator eventAggregator;
         private readonly ISettingsProvider settingsProvider;
         private readonly ILocationsRepository locationsRepository;
+        private readonly IRoutesExistenceValidator routesExistenceValidator;
 
-        public NavigationPanelViewModel(IEventAggregator eventAggregator, ISettingsProvider settingsProvider, ILocationsRepository locationsRepository)
+        public NavigationPanelViewModel(IEventAggregator eventAggregator, ISettingsProvider settingsProvider, ILocationsRepository locationsRepository, IRoutesExistenceValidator routesExistenceValidator)
         {
             this.eventAggregator = eventAggregator;
             this.settingsProvider = settingsProvider;
             this.locationsRepository = locationsRepository;
+            this.routesExistenceValidator = routesExistenceValidator;
 
             this.viaStops = new ObservableCollection<LocationData>();
             this.AddNewRouteCommand = new DelegateCommand(this.AddNewViewRoute);
@@ -60,6 +62,11 @@ namespace MapsRouteLocator.ViewModels
             routeCalculationRequestData.RouteTo = new LocationData(){Name = this.RouteTo};
             routeCalculationRequestData.ViaStops = this.viaStops.Where(x => !string.IsNullOrEmpty(x.Name)).ToArray();
 
+            if (this.ValidateRoutesFound(routeCalculationRequestData))
+            {
+                return;
+            }
+
             this.eventAggregator.GetEvent<RouteCalculationRequestEvent>().Publish(routeCalculationRequestData);
             if (this.settingsProvider.Settings.UseLocalSearchRepository)
             {
@@ -84,6 +91,29 @@ namespace MapsRouteLocator.ViewModels
             }
 
             return list.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+        }
+
+        private bool ValidateRoutesFound(RouteCalculationRequestData routeCalculationRequestData)
+        {
+            bool isValid = false;
+
+            var task = Task.Run(async () => await this.routesExistenceValidator.ValidateRouteFound(routeCalculationRequestData));
+
+            // This needs to be discussed
+            isValid = task.Result;
+
+            if (!isValid)
+            {
+                this.IsErrorMessageVisible = true;
+
+                // Of course strings should be in resources, localizable.
+                this.ErrorMessage = "Der Weg nicht gefunden.";
+                return false;
+            }
+
+            this.IsErrorMessageVisible = false;
+            this.ErrorMessage = string.Empty;
+            return true;
         }
 
         private bool ValidateCalculationRequest()

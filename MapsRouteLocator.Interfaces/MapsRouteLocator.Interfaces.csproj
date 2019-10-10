@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICultureInfoProvider.cs" />
+    <Compile Include="IRoutesExistanceQueryProvider.cs" />
     <Compile Include="ILanguageDetector.cs" />
     <Compile Include="ILocationsDataProvider.cs" />
     <Compile Include="ILocationsQueryProvider.cs" />
     <Compile Include="ILocationsRepository.cs" />
+    <Compile Include="IRoutesExistenceValidator.cs" />
     <Compile Include="IRoutesQueryProvider.cs" />
     <Compile Include="ISearchHistoryReader.cs" />
     <Compile Include="ISearchHistoryWriter.cs" />

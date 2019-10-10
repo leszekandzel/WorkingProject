@@ -33,6 +33,7 @@ namespace MapsRouteLocator.Business
                         Longitude = System.Configuration.ConfigurationManager.AppSettings["Longitude"],
                         LocationsTemplateUrl = System.Configuration.ConfigurationManager.AppSettings["LocationsTemplateUrl"],
                         DirectionsTemplateUrl = System.Configuration.ConfigurationManager.AppSettings["DirectionsTemplateUrl"],
+                        DirectionsCheckTemplateUrl = System.Configuration.ConfigurationManager.AppSettings["DirectionsCheckTemplateUrl"],
                         SearchHistoryLocationString = System.Configuration.ConfigurationManager.AppSettings["SearchHistoryLocationString"],
                         UseLocalSearchRepository = useLocalSearchRepository,
                         MinimumSearchStringLength = Consts.MinimumSearchStringLength
