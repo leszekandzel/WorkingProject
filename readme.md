@@ -1,4 +1,4 @@
-#Application description and installations instruction
+# Application description and installations instruction
 
 It is a simple application indicating the route between source and destination including stops in between.
 It uses google maps api to find the right connection. Depending on the application mode (google suggestions or memorized locations) it uses google maps api in order to fetch the locations suggestions.
@@ -21,5 +21,5 @@ Also MinimumSearchStringLength indicates the minimum lenght of given search pref
 ## Other applicaiton settings
 GoogleKey indicates the application key to be passed in order to fetch the locations and show the map
 DirectionsTemplateUrl indicates the google maps direction url in specified format
-
+DirectionsCheckTemplateUrl indicates the google maps api url to calculate if the requested directions can be found
 
