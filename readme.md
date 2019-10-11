@@ -22,6 +22,8 @@ Also MinimumSearchStringLength indicates the minimum lenght of given search pref
 
 ## Other applicaiton settings
 GoogleKey indicates the application key to be passed in order to fetch the locations and show the map
+
 DirectionsTemplateUrl indicates the google maps direction url in specified format
+
 DirectionsCheckTemplateUrl indicates the google maps api url to calculate if the requested directions can be found
 
