@@ -2,6 +2,8 @@
 
 It is a simple application indicating the route between source and destination including stops in between.
 It uses google maps api to find the right connection. Depending on the application mode (google suggestions or memorized locations) it uses google maps api in order to fetch the locations suggestions.
+Since it is now a prototype, no installer is provided. The application should work "as is" after compiling without a need of installing any database. Just make sure, that the user has "write" access to the folder where exec is located (the file with search history will be created there).
+App is using log4net in a very limited way, logging exceptions to the console. In case changes of logging configuration, the "write" permissions to the log folder and file should be given to the user.
 
 ## Important
 The IE does not seem to be compatible with google maps. This is why some strange behaviour occurs. To be investigated.
